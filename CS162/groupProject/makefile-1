@@ -1,0 +1,20 @@
+CXX = g++
+CXXFLAGS = -std=c++0x
+CXXFLAGS += -Wall
+CXXFLAGS += -pedantic-errors
+CXXFLAGS += -g
+LDFLAGS = -lboost_date_time
+
+OBJS = inputValidation.o RPSGame.o tool.o rock.o paper.o scissors.o play_game.o
+SRCS = inputValidation.cpp RPSGame.cpp tool.cpp rock.cpp paper.cpp scissors.cpp play_game.cpp
+HEADERS = inputValidation.hpp RPSGame.hpp tool.hpp rock.hpp paper.hpp scissors.hpp
+RPSGame: ${OBJS} ${HEADERS}
+	${CXX} ${LDFLAGS} ${OBJS} -o RPSGame
+
+${OBJS}: ${SRCS}
+	${CXX} ${CXXFLAGS} -c $(@:.o=.cpp)
+
+clean: ${CLEAN}
+	rm -f *.o
+	rm -f a.out
+	rm -f RPSGame
