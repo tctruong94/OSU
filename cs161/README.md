@@ -1,1 +1,1 @@
-# OSU
+Programs are written in C++
